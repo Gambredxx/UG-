@@ -461,3 +461,191 @@ document.getElementById('subscribeForm').addEventListener('submit', function(e){
 </body>
 </html>
 >>>>>>> ea662aaf6deb4789ab2054dc65189ad32d031236
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uganda Daily Jobs | Free Job Alerts</title>
+<style>
+  /* General Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f9fafc; }
+
+  /* Header / Hero */
+  header {
+    background: linear-gradient(135deg, #1f6feb, #4facfe);
+    color: white;
+    text-align: center;
+    padding: 100px 20px 60px 20px;
+    position: relative;
+  }
+  header img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+
+  /* Subscribe Box */
+  .subscribe-box {
+    background: white;
+    max-width: 550px;
+    margin: -60px auto 60px auto;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
+  .subscribe-box h2 { font-size: 2rem; color: #1f6feb; margin-bottom: 15px; }
+  .subscribe-box p { margin-bottom: 25px; color: #555; }
+
+  input[type="email"] {
+    width: 80%;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 15px 30px;
+    background: #1f6feb;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover { background: #145ac7; }
+
+  /* Features / Benefits */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+  .feature-card {
+    background: white;
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .feature-card h3 { color: #1f6feb; margin-bottom: 10px; }
+  .feature-card p { color: #555; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #777;
+    font-size: 0.9rem;
+    background: #f1f3f6;
+  }
+
+  /* Responsive */
+  @media(max-width:768px){
+    header h1 { font-size: 2.2rem; }
+    .subscribe-box { margin: -40px 20px 40px 20px; padding: 30px 20px; }
+    .features { flex-direction: column; gap: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- PLACEHOLDER IMAGE -->
+  <img src="header-placeholder.jpg" alt="Uganda Jobs Banner">
+  <h1>UG JOBS BOARD</h1>
+  <p>We get the latest job opportunities in Uganda delivered straight to your email address every day! Stay ahead, never miss a chance, and land your dream job faster.</p>
+</header>
+
+<section class="subscribe-box">
+  <h2>Subscribe for FREE Daily Job Alerts</h2>
+  <p>Join hundreds of Ugandan youths already getting real job notifications. Only verified opportunities, no spam!</p>
+  <form id="subscribeForm" method="post">
+    <input type="email" name="email" placeholder="Enter your email address" required>
+    <br>
+    <button type="submit">Get Jobs Daily 🔥</button>
+  </form>
+  <p id="message" style="color:green; margin-top:15px;"></p>
+  <p style="font-size:0.8rem; color:#555; margin-top:10px;">We respect your privacy. Your email is safe and only used for job alerts.</p>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>Daily Updates</h3>
+    <p>Receive fresh job listings every morning so you never miss an opportunity.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Verified Jobs</h3>
+    <p>All job opportunities are checked to ensure they are real and legitimate.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Free & Easy</h3>
+    <p>No hidden fees. Just subscribe and get job alerts straight to your inbox.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Uganda Daily Jobs. All rights reserved.
+</footer>
+
+<!-- CONFETTI -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+function launchConfetti(){
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
+</script>
+
+<!-- FORM SUBMISSION -->
+<script>
+document.getElementById('subscribeForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const email = this.email.value.trim();
+  if(email){
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbznueWeiJ5wKITxq495UJQQSQKQaS2G_C-Kj8XyqIeN1X-yb0jfKOGDZCKI1I3f1KIZcg/exec', {
+        method: 'POST',
+        body: new URLSearchParams({ email })
+      });
+      const text = await response.text();
+      if(text === "success"){
+        document.getElementById('message').textContent = "🎉 Thanks! You’ll now receive daily job alerts!";
+        this.reset();
+        launchConfetti();
+      } else {
+        document.getElementById('message').textContent = "⚠️ Oops! Something went wrong.";
+      }
+    } catch(err){
+      document.getElementById('message').textContent = "⚠️ Oops! Something went wrong.";
+      console.error(err);
+    }
+  }
+});
+</script>
+
+</body>
+</html>
